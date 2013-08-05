@@ -1,8 +1,6 @@
 module LinkedIn
   module Api
-
     module UpdateMethods
-
       def add_share(share)
         path = "/people/~/shares"
         defaults = {:visibility => {:code => "anyone"}}
@@ -63,14 +61,11 @@ module LinkedIn
         }
         post(path, message.to_json, "Content-Type" => "application/json")
       end
-      #
-      # def clear_status
-      #   path = "/people/~/current-status"
-      #   delete(path).code
-      # end
-      #
 
+      def follow_company(company_id)
+        path = "/people/~/following/companies"
+        post(path, {id: company_id}.to_json ,"Content-Type" => "application/json")
+      end
     end
-
   end
 end
